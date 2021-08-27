@@ -5,11 +5,14 @@
 #include "functions.h"
 
 int ChekInput(std::string& input, int& number, std::string& name ){
-    std::size_t pos = input.find(" ");
+    std::size_t pos;
+    pos = input.find(' ');
     if(pos == std::string::npos){
-        pos = input.find("-");
+        pos = input.find('-');
         if(pos == std::string::npos){
-            if(input.size() > 0 ){
+            if(!input.empty()){
+                if(input=="exit")
+                    return EXIT;
                 name = input;
                 return NAME;
             }
@@ -28,7 +31,13 @@ int ChekInput(std::string& input, int& number, std::string& name ){
         number = std::stoi(tmpStr);
         if(number < 0 || number > 999999) return ERROR;
         name = input.substr(pos+1);
-        if(name.size() == 0) return ERROR;
+        if(name.empty()) return ERROR;
         return ADD;
     }
+}
+
+bool AddRecord(int& number, std::string& name, std::map<int, std::string>& phones){
+    std::pair<std::map<int,std::string>::iterator,bool> ret;
+    ret = phones.insert(std::pair<int, std::string>(number, name));
+    return ret.second;
 }
