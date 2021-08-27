@@ -22,10 +22,12 @@ int main() {
                 else std::cout << "Can't add record!" << std::endl;
                 break;
             case NAME:
-
+                if(!FindName()) std::cout << "Can't find numbers!" << std::endl;
                 break;
             case NUMBER:
-
+                if(!FindNumber()) std::cout << "Can't find name!" << std::endl;
+                break;
+            default:
                 break;
         }
     }while(!exit);

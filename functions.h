@@ -12,5 +12,6 @@ enum {ADD, NUMBER, NAME, ERROR, EXIT};
 
 int ChekInput(std::string& input, int& number, std::string& name );
 bool AddRecord(int& number, std::string& name, std::map<int, std::string>& phones);
-
+bool FindName();
+bool FindNumber();
 #endif //HOMEWORK22_5_1_FUNCTIONS_H
