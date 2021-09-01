@@ -22,10 +22,10 @@ int main() {
                 else std::cout << "Can't add record!" << std::endl;
                 break;
             case NAME:
-                if(!FindName()) std::cout << "Can't find numbers!" << std::endl;
+                if(!FindByName(secondName, phonesMap)) std::cout << "Can't find numbers!" << std::endl;
                 break;
             case NUMBER:
-                if(!FindNumber()) std::cout << "Can't find name!" << std::endl;
+                if(!FindByNumber(phoneNumber, phonesMap)) std::cout << "Can't find name!" << std::endl;
                 break;
             default:
                 break;
@@ -33,7 +33,7 @@ int main() {
     }while(!exit);
     std::cout << "Current state of map: " << std::endl;
     std::map<int, std::string>::iterator it;
-    for(it=phonesMap.begin();it != phonesMap.end(); ++it){
+    for(it=phonesMap.begin(); it != phonesMap.end(); ++it){
         std::cout << it->second << " : " << it->first << std::endl;
     }
     return 0;
