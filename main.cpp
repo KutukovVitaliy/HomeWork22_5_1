@@ -1,9 +1,9 @@
 #include "functions.h"
 
 int main() {
-    std::string inputStr, secondName;
-    std::map<int, std::string> phonesMap;
-    int phoneNumber, operation;
+    std::string phoneNumber, inputStr, secondName;
+    std::map<std::string, std::string> phonesMap;
+    int  operation;
     bool exit;
     do{
         do{
@@ -22,7 +22,12 @@ int main() {
                 else std::cout << "Can't add record!" << std::endl;
                 break;
             case NAME:
-                if(!FindByName(secondName, phonesMap)) std::cout << "Can't find numbers!" << std::endl;
+                if(FindByName(secondName, phonesMap).empty()) std::cout << "Can't find numbers!" << std::endl;
+                else{
+                    std::cout << "Found numbers: ";
+                    for(auto el : FindByName(secondName, phonesMap)) std::cout << el << " ";
+                    std::cout << std::endl;
+                }
                 break;
             case NUMBER:
                 if(FindByNumber(phoneNumber, phonesMap).empty()) std::cout << "Can't find name!" << std::endl;
@@ -32,10 +37,6 @@ int main() {
                 break;
         }
     }while(!exit);
-    std::cout << "Current state of map: " << std::endl;
-    std::map<int, std::string>::iterator it;
-    for(it=phonesMap.begin(); it != phonesMap.end(); ++it){
-        std::cout << it->second << " : " << it->first << std::endl;
-    }
+
     return 0;
 }
