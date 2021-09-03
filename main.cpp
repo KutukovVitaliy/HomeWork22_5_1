@@ -18,14 +18,15 @@ int main() {
                 exit = true;
                 break;
             case ADD:
-                if(AddRecord(phoneNumber, secondName, phonesMap)) std::cout << "Success!" << std::endl;
+                if(AddRecord(phoneNumber, secondName, phonesMap)) std::cout << "Added success!" << std::endl;
                 else std::cout << "Can't add record!" << std::endl;
                 break;
             case NAME:
                 if(!FindByName(secondName, phonesMap)) std::cout << "Can't find numbers!" << std::endl;
                 break;
             case NUMBER:
-                if(!FindByNumber(phoneNumber, phonesMap)) std::cout << "Can't find name!" << std::endl;
+                if(FindByNumber(phoneNumber, phonesMap).empty()) std::cout << "Can't find name!" << std::endl;
+                else std::cout << "Subscriber last name: " << FindByNumber(phoneNumber, phonesMap) << std::endl;
                 break;
             default:
                 break;

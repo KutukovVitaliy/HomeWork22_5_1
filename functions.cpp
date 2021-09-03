@@ -42,6 +42,11 @@ bool AddRecord(int& number, std::string& name, std::map<int, std::string>& phone
     return ret.second;
 }
 
-bool FindByNumber(int& number, std::map<int, std::string>& phones){
+std::string FindByNumber(int& number, std::map<int,std::string>& phones){
+    return phones[number];
+}
+
+bool FindByName(std::string& name, std::map<int, std::string>& phones){
 
 }
+
